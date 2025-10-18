@@ -2,7 +2,6 @@
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
-const contactForm = document.getElementById('contactForm');
 
 // Mobile Navigation Toggle
 hamburger.addEventListener('click', () => {
@@ -70,70 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Form validation and submission
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = formData.get('name').trim();
-    const email = formData.get('email').trim();
-    const subject = formData.get('subject').trim();
-    const message = formData.get('message').trim();
-    
-    // Validation
-    let isValid = true;
-    const errors = [];
-    
-    if (!name) {
-        errors.push('이름을 입력해주세요.');
-        isValid = false;
-    }
-    
-    if (!email) {
-        errors.push('이메일을 입력해주세요.');
-        isValid = false;
-    } else if (!isValidEmail(email)) {
-        errors.push('올바른 이메일 형식을 입력해주세요.');
-        isValid = false;
-    }
-    
-    if (!subject) {
-        errors.push('제목을 입력해주세요.');
-        isValid = false;
-    }
-    
-    if (!message) {
-        errors.push('메시지를 입력해주세요.');
-        isValid = false;
-    }
-    
-    if (!isValid) {
-        showNotification(errors.join('<br>'), 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    
-    submitBtn.textContent = '전송 중...';
-    submitBtn.disabled = true;
-    
-    // Simulate API call
-    setTimeout(() => {
-        showNotification('메시지가 성공적으로 전송되었습니다!', 'success');
-        contactForm.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }, 2000);
-});
-
-// Email validation function
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
 
 // Notification system
 function showNotification(message, type = 'info') {
