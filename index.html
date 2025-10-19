@@ -114,8 +114,8 @@
                         <div class="stat-label">년간 기술 서비스 제공</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">갤럭시 제품 리뷰 및 사용법 공유</div>
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">플러터 프로그래밍 앱 개발</div>
                     </div>
                     
                 </div>
@@ -147,6 +147,10 @@
                             <span class="tech-tag">Dart</span>
                         </div>
                         <div class="project-links">
+                            <button class="project-link image-gallery-btn" onclick="openImageGallery()">
+                                <i class="fas fa-images"></i>
+                                이미지로 보기
+                            </button>
                             <a href="mailto:herjy6372@gmail.com" class="project-link">
                                 <i class="fas fa-envelope"></i>
                                 이메일 보내기
@@ -209,19 +213,38 @@
                                 <p><a href="https://x.com/herjy6372" target="_blank" class="contact-link">x.com/herjy6372</a></p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-users"></i>
-                            <div>
-                                <h4>삼성멤버스</h4>
-                                <p><a href="https://r1.community.samsung.com/t5/user/viewprofilepage/user-id/106148880" target="_blank" class="contact-link">TeraBlack 프로필</a></p>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- Image Gallery Modal -->
+    <div id="imageGalleryModal" class="gallery-modal">
+        <div class="gallery-modal-content">
+            <div class="gallery-header">
+                <h3>프로젝트 이미지</h3>
+                <button class="gallery-close" onclick="closeImageGallery()">&times;</button>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-main">
+                    <img id="galleryMainImage" src="" alt="프로젝트 이미지">
+                    <button class="gallery-nav gallery-prev" onclick="previousImage()">&#8249;</button>
+                    <button class="gallery-nav gallery-next" onclick="nextImage()">&#8250;</button>
+                </div>
+                <div class="gallery-thumbnails">
+                    <img src="image/1.jpg" alt="프로젝트 스크린샷 1" onclick="changeMainImage(this.src)">
+                    <img src="image/2-1.jpg" alt="프로젝트 스크린샷 2" onclick="changeMainImage(this.src)">
+                    <img src="image/2-2.jpg" alt="프로젝트 스크린샷 3" onclick="changeMainImage(this.src)">
+                    <img src="image/3.jpg" alt="프로젝트 스크린샷 4" onclick="changeMainImage(this.src)">
+                    <img src="image/4.jpg" alt="프로젝트 스크린샷 5" onclick="changeMainImage(this.src)">
+                    <img src="image/5.jpg" alt="프로젝트 스크린샷 6" onclick="changeMainImage(this.src)">
+                    <img src="image/6.jpg" alt="프로젝트 스크린샷 7" onclick="changeMainImage(this.src)">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">

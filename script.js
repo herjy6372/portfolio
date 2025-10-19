@@ -234,3 +234,145 @@ window.addEventListener('scroll', revealOnScroll);
 document.addEventListener('DOMContentLoaded', () => {
     revealOnScroll();
 });
+
+// Image Gallery functionality
+let currentImageIndex = 0;
+const galleryImages = [
+    'image/1.jpg',     // 프로젝트 스크린샷 1
+    'image/2-1.jpg',   // 프로젝트 스크린샷 2
+    'image/2-2.jpg',   // 프로젝트 스크린샷 3
+    'image/3.jpg',     // 프로젝트 스크린샷 4
+    'image/4.jpg',     // 프로젝트 스크린샷 5
+    'image/5.jpg',     // 프로젝트 스크린샷 6
+    'image/6.jpg'      // 프로젝트 스크린샷 7
+];
+
+function openImageGallery() {
+    const modal = document.getElementById('imageGalleryModal');
+    const mainImage = document.getElementById('galleryMainImage');
+    const thumbnails = document.querySelectorAll('.gallery-thumbnails img');
+    
+    // Set initial image
+    currentImageIndex = 0;
+    mainImage.src = galleryImages[currentImageIndex];
+    
+    // Update active thumbnail
+    thumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+    });
+    
+    // Show modal
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    
+    // Add fade-in animation
+    setTimeout(() => {
+        modal.style.opacity = '1';
+    }, 10);
+}
+
+function closeImageGallery() {
+    const modal = document.getElementById('imageGalleryModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
+}
+
+function changeMainImage(imageSrc) {
+    const mainImage = document.getElementById('galleryMainImage');
+    const thumbnails = document.querySelectorAll('.gallery-thumbnails img');
+    
+    // Find the index of the clicked thumbnail
+    const clickedIndex = Array.from(thumbnails).findIndex(thumb => thumb.src === imageSrc);
+    if (clickedIndex !== -1) {
+        currentImageIndex = clickedIndex;
+    }
+    
+    // Update main image
+    mainImage.src = imageSrc;
+    
+    // Update active thumbnail
+    thumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+    const mainImage = document.getElementById('galleryMainImage');
+    const thumbnails = document.querySelectorAll('.gallery-thumbnails img');
+    
+    mainImage.src = galleryImages[currentImageIndex];
+    
+    // Update active thumbnail
+    thumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+function previousImage() {
+    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    const mainImage = document.getElementById('galleryMainImage');
+    const thumbnails = document.querySelectorAll('.gallery-thumbnails img');
+    
+    mainImage.src = galleryImages[currentImageIndex];
+    
+    // Update active thumbnail
+    thumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('imageGalleryModal');
+    if (e.target === modal) {
+        closeImageGallery();
+    }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('imageGalleryModal');
+    if (modal.style.display === 'block') {
+        switch(e.key) {
+            case 'Escape':
+                closeImageGallery();
+                break;
+            case 'ArrowLeft':
+                previousImage();
+                break;
+            case 'ArrowRight':
+                nextImage();
+                break;
+        }
+    }
+});
+
+// Touch/swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    const modal = document.getElementById('imageGalleryModal');
+    if (modal.style.display === 'block') {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                nextImage(); // Swipe left - next image
+            } else {
+                previousImage(); // Swipe right - previous image
+            }
+        }
+    }
+}
