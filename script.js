@@ -238,13 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // Image Gallery functionality
 let currentImageIndex = 0;
 const galleryImages = [
-    'image/1.jpg',     // 프로젝트 스크린샷 1
-    'image/2-1.jpg',   // 프로젝트 스크린샷 2
-    'image/2-2.jpg',   // 프로젝트 스크린샷 3
-    'image/3.jpg',     // 프로젝트 스크린샷 4
-    'image/4.jpg',     // 프로젝트 스크린샷 5
-    'image/5.jpg',     // 프로젝트 스크린샷 6
-    'image/6.jpg'      // 프로젝트 스크린샷 7
+    'image/grade-info.png',        // 등급 안내 화면
+    'image/coupon-register.png',   // 쿠폰 등록 화면
+    'image/todo-list.png',         // 할 일 목록 화면
+    'image/permission-guide.png',  // 권한 안내 화면
+    'image/login-screen.png',      // 로그인 화면
+    'image/app-info.png'           // 앱 정보 화면
 ];
 
 function openImageGallery() {
