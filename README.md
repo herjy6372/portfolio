@@ -10,7 +10,7 @@ AI 도구(Claude, Gemini, ChatGPT Codex)를 활용해 기획부터 설계, 구�
 | 프로젝트 | 유형 | 주요 기술 | 상태 / 링크 |
 |---|---|---|---|
 | 나의 할 일 | Flutter 앱 | Firebase Auth·Firestore, fl_chart, 5단계 RBAC | [코드](https://github.com/herjy6372/mytodo) · Google Play 비공개 테스트 |
-| 교회찬양집 | Flutter 앱 | pdfx, CustomPainter 필기, MethodChannel, Isolate | Google Play 비공개 테스트 |
+| 교회찬양집 | Flutter 앱 | pdfx, CustomPainter 필기, MethodChannel, Isolate | [코드](https://github.com/herjy6372/churchpraise-app) · Google Play 비공개 테스트 |
 | 김천침례교회 | 웹사이트 | HTML/CSS/JS, Firebase, GitHub Pages | 개인정보 보호로 비공개 |
 | 나의 레시피 | Flutter 앱 | Riverpod, Dio, Hive, TheMealDB | [코드](https://github.com/herjy6372/myrecipe) · Google Play 비공개 테스트 |
 | 두근두근 카드 뒤집기 | 웹 미니게임 | Vanilla JS, Firestore 실시간 순위 | [플레이](https://herjy6372.github.io/cardflipmatch/) · [코드](https://github.com/herjy6372/cardflipmatch) |
