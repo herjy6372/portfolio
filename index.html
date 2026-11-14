@@ -181,6 +181,11 @@ section{scroll-margin-top:80px}
 .md-modal-body th{background:#f7f5ef;font-weight:800}
 .md-modal-body hr{border:none;border-top:1px solid #ece8de;margin:24px 0}
 .md-modal-body strong{color:#181818}
+.md-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 8px}
+.md-shots figure{margin:0;text-align:center}
+.md-shots img{width:100%;border-radius:14px;border:1px solid #ece8de;box-shadow:0 6px 20px rgba(20,30,45,.08)}
+.md-shots figcaption{font-size:.8rem;color:#777;margin-top:6px}
+@media(max-width:600px){.md-shots{gap:8px}}
 @media(max-width:720px){.md-modal-box{padding:44px 22px}}
 
 /* ===== scroll reveal : sections fade in, their text slides up as they enter the viewport ===== */
@@ -985,6 +990,12 @@ Platform
 <strong>현재 버전:</strong> 1.0.4<br />
 <strong>저장소:</strong> <a href="https://github.com/herjy6372/churchpraise-app" target="_blank" rel="noopener noreferrer">github.com/herjy6372/churchpraise-app ↗</a></p>
 </blockquote>
+<hr />
+<div class="md-shots">
+<figure><img loading="lazy" src="assets/img/praise-bible.jpg" alt="성경 탭"><figcaption>성경</figcaption></figure>
+<figure><img loading="lazy" src="assets/img/praise-hymns.jpg" alt="새찬송가 탭"><figcaption>새찬송가</figcaption></figure>
+<figure><img loading="lazy" src="assets/img/praise-liturgy.jpg" alt="예배문 탭"><figcaption>예배문</figcaption></figure>
+</div>
 <hr />
 <h2>💡 1. 프로젝트 소개</h2>
 <p>교회 예배 및 찬양팀을 위한 <strong>디지털 악보 뷰어 앱</strong>입니다.<br />
