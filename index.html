@@ -310,6 +310,7 @@ button.pf-process-toggle{background:none;border:0;padding:0;font-family:inherit}
       <button class="pf-tab" data-idx="2">김천침례교회</button>
       <button class="pf-tab" data-idx="3">나의 레시피</button>
       <button class="pf-tab" data-idx="4">카드 뒤집기 게임</button>
+      <button class="pf-tab" data-idx="5">루티니</button>
     </div>
 
     <div class="pf-panels" id="pfPanels">
@@ -398,9 +399,153 @@ button.pf-process-toggle{background:none;border:0;padding:0;font-family:inherit}
           <div class="pf-preview"><div class="pf-preview-frame"><div class="pf-preview-chrome"><span></span><span></span><span></span></div><div class="pf-preview-screen"><img loading="lazy" src="assets/cardflipmatch.png" alt="카드 판과 응원 캐릭터가 표시된 두근두근 카드 뒤집기 게임 화면" width="960" height="527"></div></div></div>
         </div>
       </div>
+      <div class="pf-panel" id="routiny">
+        <div class="pf-panel-top">
+          <div>
+            <div class="pf-type">Flutter App · Beta</div>
+            <h3>루티니 <span>Routiny</span></h3>
+            <p class="desc">삼성 헬스·애플 건강의 걸음 수·운동 거리·체중을 자동으로 불러와 오늘의 운동 루틴 달성과 수면·컨디션을 함께 기록하는 루틴·컨디션 트래커. 온디바이스 페이스 코칭과 홈 화면 위젯을 지원합니다.</p>
+            <ul class="pf-highlights"><li>Android Health Connect·iOS HealthKit을 하나의 서비스로 통합하고 플랫폼별 데이터 타입 분리</li><li>플러그인 소스 분석으로 숨은 권한 누락(<code>READ_TOTAL_CALORIES_BURNED</code>)을 찾아 권한 거부 문제 해결</li><li>앱 실행·복귀·15분 주기 자동 동기화를 권한 팝업 없는 silent 모드로 구현</li></ul>
+            <div class="pf-stack"><span>Flutter</span><span>Dart</span><span>Health Connect</span><span>HealthKit</span><span>Hive</span><span>Firestore</span></div>
+            <div class="pf-links">
+              <span class="pf-btn muted">Google Play 비공개 테스트 중</span>
+            </div>
+            <div class="pf-process-toggle" data-src="mdSrc6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>작업과정 보기</div>
+          </div>
+          <div class="pf-preview"><div class="pf-phone-frame"><div class="pf-phone-screen"><div class="pf-phone-island"></div><img loading="lazy" src="assets/img/pf-routiny.jpg" alt="목표 체중과 오늘의 운동 루틴, 수면·컨디션 체크가 표시된 루티니 홈 화면"></div></div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<template id="mdSrc6">
+<h1>🏃‍♂️ 루티니 (Routiny) — 건강 데이터 연동 루틴·컨디션 트래커</h1>
+<blockquote>
+<p><strong>개발 기간:</strong> 2026.11 ~ 진행중 (개인 프로젝트, 1인 개발)<br />
+<strong>플랫폼:</strong> Android (Google Play Store 비공개 테스트) / iOS (실기기 구동 검증)<br />
+<strong>패키지명:</strong> com.terablack.routiny<br />
+<strong>현재 버전:</strong> 1.0.2+7</p>
+</blockquote>
+<hr />
+<h2>💡 1. 프로젝트 소개</h2>
+<p><strong>"루티니"</strong> 는 삼성 헬스·애플 건강에 쌓인 걸음 수·운동 거리·체중을 자동으로 불러와, 오늘의 운동 루틴 달성 여부와 수면·컨디션을 한 화면에서 기록하는 <strong>루틴·컨디션 트래커 Flutter 앱</strong>입니다.</p>
+<p>사용자가 직접 숫자를 입력하지 않아도 이미 기기에 쌓인 건강 데이터를 활용하도록, Android <strong>Health Connect</strong>와 iOS <strong>HealthKit</strong>을 하나의 서비스로 통합하는 것을 핵심 목표로 잡았습니다. 수면 시간·컨디션·운동량을 조합해 온디바이스로 오늘의 페이스 코칭 점수와 추천 페이스도 제공합니다.</p>
+<hr />
+<h2>🛠 2. 사용 기술 및 개발 환경 (Tech Stack)</h2>
+<table>
+<thead>
+<tr>
+<th>분류</th>
+<th>기술</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>언어</strong></td>
+<td>Dart, Kotlin, Swift</td>
+</tr>
+<tr>
+<td><strong>프레임워크</strong></td>
+<td>Flutter</td>
+</tr>
+<tr>
+<td><strong>건강 데이터</strong></td>
+<td>health (Health Connect / HealthKit), permission_handler</td>
+</tr>
+<tr>
+<td><strong>로컬 저장</strong></td>
+<td>Hive, hive_flutter</td>
+</tr>
+<tr>
+<td><strong>인증 / DB</strong></td>
+<td>Firebase Auth, Cloud Firestore</td>
+</tr>
+<tr>
+<td><strong>홈 화면 위젯</strong></td>
+<td>home_widget, Android AppWidgetProvider, iOS WidgetKit</td>
+</tr>
+<tr>
+<td><strong>배포</strong></td>
+<td>Google Play Console (비공개 테스트), Xcode 서명·실기기 설치</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>🌟 3. 핵심 기능 및 구현 내용</h2>
+<h3>🔑 주요 기능</h3>
+<ul>
+<li><strong>건강 데이터 자동 동기화</strong>: 걸음 수, 걷기·달리기·수영 거리, 체중, 운동 기록을 Health Connect / HealthKit에서 읽기 전용으로 불러옵니다.</li>
+<li><strong>첫 실행 권한 온보딩</strong>: 어떤 권한을 왜 쓰는지 먼저 안내하고, 버튼 하나로 신체 활동 권한과 건강 데이터 권한 화면을 순서대로 띄웁니다.</li>
+<li><strong>맞춤 운동 루틴</strong>: 기본 <code>👟 걷기</code>에 달리기·등산·수영·자전거·헬스·요가와 직접 입력한 루틴을 추가·삭제할 수 있습니다.</li>
+<li><strong>아침 수면 · 저녁 컨디션 체크</strong>: 수면 시간과 컨디션을 탭 한 번으로 기록합니다.</li>
+<li><strong>온디바이스 페이스 코칭</strong>: 수면·컨디션·운동량으로 0~100점 컨디션 점수와 종목별 추천 페이스를 계산합니다.</li>
+<li><strong>캘린더 히스토리 · 주간 통계</strong>: 날짜별 루틴 달성 현황과 운동·체중·수면 기록을 조회하고 수정합니다.</li>
+<li><strong>홈 화면 위젯</strong>: Android·iOS 네이티브 위젯으로 오늘의 걸음 수와 루틴 달성률을 보여줍니다.</li>
+<li><strong>계정 · 클라우드 동기화</strong>: 회원가입·로그인·비밀번호 재설정·회원 탈퇴(계정·Firestore·로컬 데이터 즉시 삭제)를 지원합니다.</li>
+</ul>
+<h3>🔄 자동 동기화 흐름</h3>
+<ul>
+<li>앱 실행 시, 백그라운드에서 돌아올 때, 앱이 열려 있는 동안 15분마다 자동으로 동기화합니다.</li>
+<li>자동 동기화는 <strong>silent 모드</strong>로 동작해 권한 팝업이나 설치 안내를 반복해서 띄우지 않고, 이미 허용된 범위의 데이터만 가져옵니다.</li>
+<li>1분 이내 중복 호출과 동시 실행을 막아 불필요한 조회를 줄였습니다.</li>
+<li>Apple Watch 기록은 iPhone 건강 앱으로 모이므로 별도 연동 없이 함께 반영됩니다.</li>
+</ul>
+<hr />
+<h2>🪵 4. 아키텍처 및 시스템 구조</h2>
+<pre><code class="language-text">UI (Home · History · Onboarding · Auth)
+   │  ValueListenableBuilder 로 Hive 변경 즉시 반영
+   ▼
+Services
+   ├─ HealthService        : 플랫폼별 데이터 타입·권한 분기, 동기화
+   ├─ LocalStorageService  : Hive 박스(프로필 · 루틴 · 건강 기록)
+   ├─ AuthService          : Firebase Auth · Firestore 동기화
+   ├─ PaceCoachingService  : 온디바이스 컨디션 점수 계산
+   └─ HomeWidgetBridge     : 네이티브 위젯 데이터 전달
+   ▼
+Platform
+   ├─ Android : Health Connect + AppWidgetProvider (FlutterFragmentActivity)
+   └─ iOS     : HealthKit (entitlements) + WidgetKit (App Group)
+</code></pre>
+<ul>
+<li><strong>로컬 우선</strong>: 화면은 Hive 데이터를 바로 그리고, 건강 데이터와 Firestore 동기화 결과가 Hive에 저장되면 자동으로 갱신됩니다.</li>
+<li><strong>플랫폼별 데이터 타입 분리</strong>: iOS 전용 타입(<code>DISTANCE_WALKING_RUNNING</code>, <code>DISTANCE_SWIMMING</code>)과 Android 타입(<code>DISTANCE_DELTA</code>, 수영 운동 세션 거리)을 나눠 같은 화면 데이터로 합칩니다.</li>
+</ul>
+<hr />
+<h2>🧩 5. 문제 해결 과정 (Troubleshooting)</h2>
+<h3>1) Android에서 건강 데이터 접근 권한이 계속 거부되던 문제</h3>
+<ul>
+<li><strong>증상</strong>: Play 스토어 비공개 테스트 빌드에서 권한을 허용해도 "접근 권한이 거부되었습니다"가 표시되었습니다.</li>
+<li><strong>원인 분석</strong>: <code>health</code> 플러그인 소스를 직접 확인한 결과 두 가지 원인을 찾았습니다.</li>
+<li><code>WORKOUT</code> 타입을 요청하면 플러그인이 내부적으로 <code>READ_DISTANCE</code>와 <code>READ_TOTAL_CALORIES_BURNED</code> 권한을 함께 요청하는데, 매니페스트에 칼로리 권한이 없어 Health Connect가 요청 전체를 거부했습니다.</li>
+<li><code>DISTANCE_WALKING_RUNNING</code>, <code>DISTANCE_SWIMMING</code>은 iOS 전용 타입이라 Android에서 조회하면 예외가 발생했습니다.</li>
+<li><strong>해결</strong>: 매니페스트에 누락된 권한을 선언하고, 플랫폼별 데이터 타입 목록을 분리했습니다. 권한이 이미 있으면 팝업 없이 바로 진행하고, Health Connect가 없거나 업데이트가 필요하면 설치 화면으로 안내하도록 보완했습니다.</li>
+</ul>
+<h3>2) iOS 실기기에서 HealthKit이 동작하지 않던 문제</h3>
+<ul>
+<li><strong>원인</strong>: <code>Runner.entitlements</code> 파일은 있었지만 Xcode 타겟의 <code>CODE_SIGN_ENTITLEMENTS</code>에 연결되지 않아, 시뮬레이터와 달리 실기기 서명에 HealthKit 권한이 빠져 있었습니다.</li>
+<li><strong>해결</strong>: 빌드 설정(Debug·Release·Profile)에 entitlements를 연결하고, 서명된 앱에 <code>com.apple.developer.healthkit</code>이 포함된 것을 확인한 뒤 iPhone 17 Pro 실기기에 설치해 검증했습니다.</li>
+<li>Flutter Debug 빌드는 iOS에서 단독 실행이 제한되므로, 실기기 검증은 Release 빌드로 진행했습니다.</li>
+</ul>
+<h3>3) Google Play 업로드 및 건강 앱 신고 대응</h3>
+<ul>
+<li>권한 추가에 맞춰 Play Console <strong>건강 앱(Health Connect) 권한 신고</strong>를 갱신하고, 권한별 사용 목적을 실제 기능과 일치하게 작성했습니다.</li>
+<li>버전 코드 중복으로 업로드가 거부되어 버전을 <code>1.0.2+7</code>로 올리고, 업로드 키 서명과 병합 매니페스트의 권한 포함 여부를 확인한 뒤 다시 빌드했습니다.</li>
+</ul>
+<hr />
+<h2>📈 6. 성과 및 회고</h2>
+<ul>
+<li>건강 데이터 연동은 플랫폼마다 데이터 타입·권한 모델·심사 기준이 달라, <strong>플러그인 내부 동작까지 확인해야 원인을 찾을 수 있다</strong>는 점을 배웠습니다.</li>
+<li>권한은 "실제로 쓰는 것만 읽기 전용으로" 선언하는 원칙을 지키되, 플러그인이 함께 요구하는 권한까지 매니페스트·스토어 신고·개인정보처리방침에 일관되게 반영해야 했습니다.</li>
+<li>Android 15/16 대응(<code>targetSdk 36</code>, Edge-to-Edge), 의료기기 오인 방지 면책 문구, 개인정보처리방침 페이지 공개 등 스토어 심사 요건을 개발 단계에서 함께 준비했습니다.</li>
+</ul>
+<h3>다음 단계</h3>
+<ul>
+<li>Google Play 비공개 테스트(12명 · 14일) 완료 후 프로덕션 출시</li>
+<li>HealthKit 백그라운드 전달(앱이 꺼져 있을 때의 동기화) 네이티브 구현 검토</li>
+<li>App Store(TestFlight) 배포</li>
+</ul>
+</template>
 
 <template id="mdSrc5">
 <h1>두근두근 카드 뒤집기 — CardFlipMatch</h1>
@@ -1394,6 +1539,10 @@ pfTabs.forEach(tab => {
 
 if (location.hash === '#cardflipmatch') {
   pfTabs[4].click();
+  document.getElementById('portfolio').scrollIntoView();
+}
+if (location.hash === '#routiny') {
+  pfTabs[5].click();
   document.getElementById('portfolio').scrollIntoView();
 }
 
