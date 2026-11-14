@@ -311,6 +311,7 @@ button.pf-process-toggle{background:none;border:0;padding:0;font-family:inherit}
       <button class="pf-tab" data-idx="3">나의 레시피</button>
       <button class="pf-tab" data-idx="4">카드 뒤집기 게임</button>
       <button class="pf-tab" data-idx="5">루티니</button>
+      <button class="pf-tab" data-idx="6">한국 랜덤여행</button>
     </div>
 
     <div class="pf-panels" id="pfPanels">
@@ -415,9 +416,149 @@ button.pf-process-toggle{background:none;border:0;padding:0;font-family:inherit}
           <div class="pf-preview"><div class="pf-phone-frame"><div class="pf-phone-screen"><div class="pf-phone-island"></div><img loading="lazy" src="assets/img/pf-routiny.jpg" alt="목표 체중과 오늘의 운동 루틴, 수면·컨디션 체크가 표시된 루티니 홈 화면"></div></div></div>
         </div>
       </div>
+      <div class="pf-panel" id="randomtravel">
+        <div class="pf-panel-top">
+          <div>
+            <div class="pf-type">Flutter App · Beta</div>
+            <h3>한국 랜덤여행 <span>Random Travel</span></h3>
+            <p class="desc">발사대를 꾹 눌렀다 떼면 다트가 대한민국 지도 위 무작위 시·군·구로 날아가 다음 여행지를 정해주는 앱. 거주지로부터의 거리, 지역 특산물·가볼 만한 곳을 보여주고 몇 박 며칠 여행 계획까지 기록합니다.</p>
+            <ul class="pf-highlights"><li>통계청 행정경계 GeoJSON(시군구 250개)을 <code>CustomPainter</code>로 직접 그리고, 경위도↔화면 좌표 투영을 구현</li><li>Ray casting 점-폴리곤 판정으로 착지 지점을 육지·북한·바다로 구분하고, 랜덤 착지는 항상 실제 시군구 안에 떨어지도록 보장</li><li>이름이 겹치는 시군(강원·경남 고성군)과 광주·전남 통합 표기를 시도 코드 기준으로 정확히 구분</li></ul>
+            <div class="pf-stack"><span>Flutter</span><span>Dart</span><span>CustomPainter</span><span>GeoJSON</span><span>Provider</span><span>Hive</span><span>Firebase Auth</span><span>Firestore</span></div>
+            <div class="pf-links">
+              <span class="pf-btn muted">Google Play 비공개 테스트 중</span>
+            </div>
+            <div class="pf-process-toggle" data-src="mdSrc7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>작업과정 보기</div>
+          </div>
+          <div class="pf-preview"><div class="pf-phone-frame"><div class="pf-phone-screen"><div class="pf-phone-island"></div><img loading="lazy" src="assets/img/pf-randomtravel.jpg" alt="시군구 경계가 그려진 한반도 지도와 제주 아래 다트 발사대가 표시된 한국 랜덤여행 메인 화면"></div></div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<template id="mdSrc7">
+<h1>🎯 한국 랜덤여행 (Random Travel) — 다트로 뽑는 국내 여행지</h1>
+<blockquote>
+<p><strong>개발 기간:</strong> 2026.07 (개인 프로젝트, 1인 개발)<br />
+<strong>플랫폼:</strong> Android (Google Play Store 비공개 테스트) / iOS (시뮬레이터 구동 검증)<br />
+<strong>패키지명:</strong> com.terablack.randomtravel<br />
+<strong>현재 버전:</strong> 1.0.0+1</p>
+</blockquote>
+<hr />
+<h2>💡 1. 프로젝트 소개</h2>
+<p><strong>"한국 랜덤여행"</strong> 은 다음 여행지를 고민하는 대신, 대한민국 지도에 다트를 던져 <strong>무작위 시·군·구</strong>를 여행지로 정해주는 Flutter 앱입니다.</p>
+<p>지도 아래(제주도 밑) 발사대를 꾹 누르면 다트가 룰렛처럼 회전하고, 손을 떼면 포물선을 그리며 전국 어딘가로 날아가 꽂힙니다. 방향과 세기를 사용자가 정하지 않도록 한 것이 핵심으로, "랜덤"이라는 취지를 그대로 살렸습니다. 착지한 지역의 특산물·가볼 만한 곳과 우리집에서의 거리를 보여주고, 마음에 들면 여행 계획으로 저장할 수 있습니다.</p>
+<hr />
+<h2>🛠 2. 사용 기술 및 개발 환경 (Tech Stack)</h2>
+<table>
+<thead>
+<tr>
+<th>분류</th>
+<th>기술</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>언어</strong></td>
+<td>Dart</td>
+</tr>
+<tr>
+<td><strong>프레임워크</strong></td>
+<td>Flutter (Material 3)</td>
+</tr>
+<tr>
+<td><strong>지도 렌더링</strong></td>
+<td>CustomPainter, 통계청 행정경계 GeoJSON (시도 17 · 시군구 250)</td>
+</tr>
+<tr>
+<td><strong>상태 관리</strong></td>
+<td>Provider (ChangeNotifier)</td>
+</tr>
+<tr>
+<td><strong>로컬 저장</strong></td>
+<td>Hive, hive_flutter</td>
+</tr>
+<tr>
+<td><strong>인증 / DB</strong></td>
+<td>Firebase Auth (Google 로그인), Cloud Firestore</td>
+</tr>
+<tr>
+<td><strong>콘텐츠 데이터</strong></td>
+<td>시군별 특산물·명소 JSON (Gemini 참고 정리)</td>
+</tr>
+<tr>
+<td><strong>배포</strong></td>
+<td>Google Play Console (비공개 테스트), GitHub Pages (개인정보처리방침)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>🌟 3. 핵심 기능 및 구현 내용</h2>
+<h3>🔑 주요 기능</h3>
+<ul>
+<li><strong>랜덤 다트 발사</strong>: 발사대를 꾹 누르면 룰렛 회전, 떼면 다트가 포물선을 그리며 무작위 시·군·구로 날아갑니다.</li>
+<li><strong>당첨 여행지 정보</strong>: 착지한 지역의 특산물과 가볼 만한 곳을 보여줍니다.</li>
+<li><strong>우리집에서의 거리</strong>: 거주지(시·군·구)를 설정하면 하버사인 공식으로 직선거리를 계산하고 "당일치기 딱 좋아요", "1박 2일 떠나볼까요" 같은 문구로 안내합니다.</li>
+<li><strong>여행 기록 · 계획</strong>: 뽑은 여행지를 저장하고 상태(아이디어·갈 예정·다녀옴), 방문일, 몇 박 며칠, 메모를 기록합니다.</li>
+<li><strong>Google 로그인 · 클라우드 저장</strong>: 로그인한 사용자별로 Firestore에 기록을 저장해 기기를 바꿔도 유지됩니다.</li>
+<li><strong>사용 설명서 · 개인정보처리방침</strong>: 앱 안에서 사용법을 안내하고, 처리방침은 GitHub Pages로 공개했습니다.</li>
+</ul>
+<h3>🗺 지도 그리기와 착지 판정</h3>
+<ul>
+<li>GeoJSON 폴리곤을 위경도 → <strong>월드 좌표</strong>(x = 경도 × cos(중간 위도), y = −위도)로 한 번만 변환해 <code>Path</code>로 만들어 두고, 화면 크기에 맞추는 확대·이동은 캔버스 변환(<code>MapFit</code>)으로 처리합니다.</li>
+<li>정적인 지도는 <code>RepaintBoundary</code> 안의 <code>KoreaMapPainter</code>로, 움직이는 다트는 별도의 <code>DartOverlayPainter</code>로 나눠 다트 애니메이션 중 지도를 다시 그리지 않도록 했습니다.</li>
+<li>착지 지점은 <strong>Ray casting</strong> 방식의 점-폴리곤 판정(구멍 있는 폴리곤은 even-odd 규칙)으로 육지(어느 시군구) · 북한 · 바다를 구분합니다.</li>
+</ul>
+<hr />
+<h2>🪵 4. 아키텍처 및 시스템 구조</h2>
+<pre><code class="language-text">UI (MapGame · Result · Records · Settings · Login)
+   │  Provider 로 AppState 구독
+   ▼
+AppState (ChangeNotifier)
+   ├─ GeoData             : GeoJSON 파싱 · 투영 · 착지 판정 · 랜덤 지점 생성
+   ├─ SpecialtyRepository : 광역시 / 도-시군 / 도 단위 특산물·명소 조회
+   ├─ AuthService         : FirebaseAuthService ↔ LocalAuthService(폴백)
+   └─ RecordStore         : FirestoreRecordStore ↔ HiveRecordStore(폴백)
+   ▼
+Animation
+   └─ DartGameController  : idle → charging → flying → landed 상태 머신
+</code></pre>
+<ul>
+<li><strong>인터페이스 기반 교체</strong>: 인증과 기록 저장소를 추상 인터페이스로 두어, Firebase 초기화에 실패하면 로컬 모드(Hive)로 자동 폴백합니다.</li>
+<li><strong>상태 머신 애니메이션</strong>: 다트의 단계별 상태를 컨트롤러 하나에 모으고, <code>AnimationController</code>가 매 프레임 비행 진행도를 넘겨 포물선 높이와 진행 방향을 계산합니다.</li>
+</ul>
+<hr />
+<h2>🧩 5. 문제 해결 과정 (Troubleshooting)</h2>
+<h3>1) 다트가 바다나 북한에 떨어지던 문제</h3>
+<ul>
+<li><strong>문제</strong>: 화면의 임의 좌표로 다트를 날리면 지도 면적의 상당 부분이 바다·북한이라 갈 수 없는 곳이 자주 뽑혀, 여행지를 정한다는 목적에 맞지 않았습니다.</li>
+<li><strong>해결</strong>: 착지 결과를 먼저 뽑도록 순서를 바꿨습니다. 250개 시군구 중 하나를 고르고, 그 지역의 경계 상자 안에서 점을 뽑아 실제 폴리곤 안에 들어오는 점만 채택합니다(실패 시 중심점). 이후 그 지점의 화면 좌표로 다트를 발사합니다.</li>
+<li><strong>검증</strong>: 시드를 고정한 200회 랜덤 테스트에서 모든 결과가 육지이고, 반환된 점이 해당 시군구 안에 있는지 확인했습니다.</li>
+</ul>
+<h3>2) 다른 지역의 명소가 섞여 나오던 문제</h3>
+<ul>
+<li><strong>문제</strong>: 명소를 도 단위로 묶으면 구미시에 떨어져도 경주 불국사가 나오고, 시군명만으로 찾으면 강원 고성군과 경남 고성군처럼 이름이 같은 지역이 구분되지 않습니다.</li>
+<li><strong>해결</strong>: 데이터를 <strong>광역시(시도 코드) / 도-시군(시도 코드로 감싼 시군명) / 도 대표 특산물</strong> 3단계로 재구성했습니다. 명소는 착지한 시군 것만 보여주고, 특산물은 시군 데이터가 없을 때만 도 단위로 대체합니다. <code>포항시남구 → 포항시</code>처럼 자치구가 나뉜 시는 같은 시도 안에서만 이름 앞부분으로 매칭합니다.</li>
+</ul>
+<h3>3) 행정구역 변경 반영</h3>
+<ul>
+<li>2023년 대구광역시에 편입된 <strong>군위군</strong>은 광역시 대표 명소 대신 군 자체 명소(화본역 등)를 우선 보여주도록 처리했습니다.</li>
+<li>강원·전북 특별자치도 명칭과 광주·전남 통합 표기를 시도 코드 기준으로 정규화하되, 명소 조회는 원래 코드(24·36)로 분리해 섞이지 않게 했습니다.</li>
+<li>서울시청·구미시청·평양·서해 좌표 등으로 착지 판정을, 지역별 조회 규칙은 단위 테스트로 검증했습니다.</li>
+</ul>
+<hr />
+<h2>📈 6. 성과 및 회고</h2>
+<ul>
+<li>지도 SDK 없이 GeoJSON과 <code>CustomPainter</code>만으로 지도를 그리면서 <strong>좌표 투영, 점-폴리곤 판정, 렌더링 분리</strong> 같은 기초를 직접 구현해볼 수 있었습니다.</li>
+<li>"방향과 세기를 정하지 않는 다트"처럼 기능보다 <strong>앱의 취지에 맞는 인터랙션</strong>을 먼저 정하고, 기술 구조를 그 경험에 맞추는 과정을 경험했습니다.</li>
+<li>AI(Gemini)로 정리한 콘텐츠 데이터는 출처를 앱 안에 명시하고, 지역 매칭 규칙은 테스트로 고정해 데이터가 늘어나도 잘못된 추천이 나오지 않도록 했습니다.</li>
+</ul>
+<h3>다음 단계</h3>
+<ul>
+<li>시군별 명소·특산물 데이터 보강 (현재 일부 지역은 "준비 중" 안내)</li>
+<li>다녀온 여행지를 지도 위에 색칠해 보여주는 여행 지도 기능</li>
+</ul>
+</template>
 
 <template id="mdSrc6">
 <h1>🏃‍♂️ 루티니 (Routiny) — 건강 데이터 연동 루틴·컨디션 트래커</h1>
@@ -1541,6 +1682,10 @@ if (location.hash === '#cardflipmatch') {
 }
 if (location.hash === '#routiny') {
   pfTabs[5].click();
+  document.getElementById('portfolio').scrollIntoView();
+}
+if (location.hash === '#randomtravel') {
+  pfTabs[6].click();
   document.getElementById('portfolio').scrollIntoView();
 }
 
