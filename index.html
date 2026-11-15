@@ -1441,6 +1441,44 @@ test/
 ├── bible_search_test.dart             # [신규] 역본별 장절·본문 검색 및 결과 분리 테스트
 └── widget_test.dart                   # 성경 로드·찬송가·교독문 데이터 테스트
 </code></pre>
+</details>
+<details class="md-fold"><summary>✨ 9. 성경 읽기 기능 강화 (v1.3.0 이후, 다음 업데이트 예정) <span>펼쳐 보기</span></summary>
+
+<h3>🟦🟥 1) 색상 권 선택 &amp; 권 → 장 → 절 선택</h3>
+<ul>
+<li>성경 선택 화면을 <code>창</code>·<code>마</code>·<code>요</code> 같은 <strong>약어 네모 박스</strong>로 바꾸고 <strong>구약은 파란색, 신약은 빨간색</strong>으로 구분 (상단 구약·신약 배지도 같은 색)</li>
+<li>권·장 선택에서 <strong>절 선택까지</strong> 확장하고, 고른 절로 바로 이동해 강조 (<code>scrollable_positioned_list</code>로 긴 장에서도 정확히 이동)</li>
+<li>한 장짜리 책(옵·몬·요이·요삼·유)은 장 선택 없이 바로 절 선택</li>
+</ul>
+<h3>🖍 2) 여러 절 선택 · 복사 · 형광펜</h3>
+<ul>
+<li>절을 탭하면 하나씩, <strong>길게 누르면 마지막으로 누른 절부터 범위로</strong> 선택 (예: 16절 탭 → 18절 길게 누르기 → 16~18절)</li>
+<li>선택하면 아래 막대에서 <strong>한 번에 복사</strong> — <code>요한복음 3:16~18 (개역개정)</code> 머리말과 절별 본문, 떨어진 절은 <code>1~3, 5, 7~8</code>처럼 범위로 표기</li>
+<li><strong>형광펜 4색(노랑·초록·파랑·분홍)과 지우기</strong> — 권·장·절 위치 기준으로 저장해 역본을 바꿔도 같은 자리에 표시, 다크 모드에서는 투명도를 낮춰 가독성 유지</li>
+</ul>
+<h3>📅 3) 2027 성경읽기표</h3>
+<ul>
+<li>창세기 1장~요한계시록 22장 <strong>1,189장을 2027년 1월 1일~12월 31일 365일</strong>에 하루 3~4장씩 고르게 배분 (<code>ReadingPlanService</code>)</li>
+<li>성경 탭 맨 위에 <strong>오늘 분량</strong> 표시, 읽기표 화면에서 진도율·날짜별 분량·읽음 체크, 분량을 누르면 해당 장으로 이동</li>
+<li>형광펜과 읽기표 진도를 기존 <strong>Google 백업·복원(Firestore)</strong>에 포함</li>
+</ul>
+<h3>✅ 4) 테스트</h3>
+<ul>
+<li>읽기표가 1,189장을 빠짐없이 순서대로 나누는지, 날짜 계산, 절 범위 표기, 형광펜 저장을 검증하는 테스트(<code>test/reading_plan_test.dart</code>) 추가 — 전체 19개 통과</li>
+</ul>
+<h3>🗂 5) 추가·변경된 파일</h3>
+<pre><code>lib/
+├── services/
+│   ├── bible_service.dart         # [변경] 약어 목록 공개, 절 범위 표기(formatVerseRanges)
+│   ├── highlight_service.dart     # [신규] 형광펜 4색 저장·지우기
+│   ├── reading_plan_service.dart  # [신규] 2027 읽기표 생성, 오늘 분량, 읽음 체크
+│   └── sync_service.dart          # [변경] 형광펜·읽기표 진도 백업/복원
+└── screens/
+    ├── bible_tab.dart             # [변경] 색상 권 선택, 절 선택·이동, 여러 절 선택 막대, 읽기표 안내 줄
+    └── reading_plan_screen.dart   # [신규] 읽기표 화면 (진도율, 날짜별 분량, 읽음 체크)
+test/
+└── reading_plan_test.dart         # [신규] 읽기표·절 범위·형광펜 테스트
+</code></pre>
 </details><p><a href="https://github.com/herjy6372/churchpraise-app" target="_blank" rel="noopener noreferrer">GitHub 코드 보기 ↗</a></p>
 </template>
 <template id="mdSrc3"><h1>⛪ 김천침례교회 홈페이지 — 정적 사이트 + 교인 전용 회원 시스템</h1>
