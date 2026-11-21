@@ -775,8 +775,8 @@ Platform
 <td>table_calendar, fl_chart</td>
 </tr>
 <tr>
-<td><strong>위치/날씨</strong></td>
-<td>geolocator, http</td>
+<td><strong>네트워크</strong></td>
+<td>http (한국 공휴일 API)</td>
 </tr>
 <tr>
 <td><strong>공휴일 데이터</strong></td>
@@ -834,10 +834,10 @@ Platform
 <p>Firebase Auth(Google 로그인) + Firestore로 기기 간 데이터 백업/복원</p>
 </li>
 <li>
-<p><strong>알림 · 날씨</strong></p>
+<p><strong>알림 · 공휴일</strong></p>
 </li>
 <li>
-<p>로컬 푸시(일일 알림), 위치 기반 날씨, 한국/일본 공휴일 자동 반영</p>
+<p>로컬 푸시(일일 알림), 한국/일본 공휴일 자동 반영</p>
 </li>
 <li>
 <p><strong>다국어 · 테마</strong></p>
@@ -901,7 +901,6 @@ Platform
 ├── services/
 │   ├── sync_service.dart            # Firebase 동기화
 │   ├── notification_service.dart / daily_notification_service.dart
-│   ├── weather_service.dart
 │   ├── korean_holiday_service.dart / japanese_holiday_service.dart
 │   └── permission_service.dart
 ├── screens/                         # 23개 화면 (할일/캘린더/가계부/기분/타이머/
