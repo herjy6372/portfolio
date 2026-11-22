@@ -33,7 +33,7 @@ Google Play 스토어 등록정보에 올린 이미지(앱 아이콘, 그래픽 
 |---|---|
 | 성경&찬양 | [churchpraise-app/docs/play-store](https://github.com/herjy6372/churchpraise-app/tree/main/docs/play-store) — `graphics/`(아이콘 512×512, 그래픽 1024×500), `phone/`(1080×1920 4장), `tablet/`(1920×1080 4장) |
 
-이 사이트의 성경&찬양 미리보기 이미지(`assets/img/pf-praise-highlight-20261115.jpg`, `assets/img/praise-*-20261115.jpg`)는 형광펜·색상 권 선택·여러 절 선택·2027 읽기표가 들어간 최신 화면이고, 앱 저장소의 `docs/screenshots/`와 같은 화면입니다. (스토어 이미지는 v1.3.0 기준) 이미지를 바꿀 때는 브라우저 캐시 때문에 예전 이미지가 보이지 않도록 파일 이름의 날짜를 바꿔 새 이름으로 올립니다.
+이 사이트의 성경&찬양 미리보기 이미지(`assets/img/pf-praise-compare-20261122.jpg`, `assets/img/praise-*-20261115.jpg`, `assets/img/praise-compare*-20261122.jpg`)는 성경 비교 보기(휴대폰·태블릿 가로)·형광펜·색상 권 선택·여러 절 선택·2027 읽기표가 들어간 최신 화면이고, 앱 저장소의 `docs/screenshots/`와 같은 화면입니다. (스토어 이미지는 v1.3.0 기준) 이미지를 바꿀 때는 브라우저 캐시 때문에 예전 이미지가 보이지 않도록 파일 이름의 날짜를 바꿔 새 이름으로 올립니다.
 
 빌드 과정 없는 정적 사이트이며, 로컬에서는 `python3 -m http.server`로 확인할 수 있습니다.
 
