@@ -1485,7 +1485,39 @@ test/
 <ul>
 <li>버전 <code>1.4.0+13</code>으로 릴리스 App Bundle을 빌드해 <strong>비공개 테스트(Alpha) 트랙</strong>에 등록 (기존 테스터 업데이트 크기 1.84MB), 출시 노트 작성 후 <strong>Google 검토에 제출</strong> — 승인 후 직접 게시 예정</li>
 </ul>
-</details><p><a href="https://github.com/herjy6372/churchpraise-app" target="_blank" rel="noopener noreferrer">GitHub 코드 보기 ↗</a></p>
+</details><details class="md-fold"><summary>📖 10. 성경 비교 보기 &amp; 읽기표 표기 개선 (v1.4.0 이후, 다음 업데이트 예정) <span>펼쳐 보기</span></summary>
+
+<h3>🔀 1) 성경 비교 보기</h3>
+<ul>
+<li>역본 시트에 <strong>"비교해서 보기"</strong>를 추가해, 기본 역본과 함께 다른 역본(예: <code>개역개정 + 개역한글</code>, <code>개역개정 + KJV</code>)을 한 화면에 표시 — "비교 안 함"을 고르면 기존처럼 기본 역본만 표시</li>
+<li><strong>휴대폰·태블릿 세로</strong>: 절마다 기본 역본은 <strong>진한 글자</strong>, 그 아래 비교 역본은 <strong>작고 흐린 글자</strong>(앞에 <code>KJV</code>처럼 역본 이름 표시)</li>
+<li><strong>태블릿 가로</strong>: <code>MediaQuery</code>로 가로 방향 + 짧은 변 600dp 이상을 감지해 <strong>왼쪽 기본 역본, 오른쪽 비교 역본</strong>을 절마다 나란히 배치 (<code>IntrinsicHeight</code>로 두 열 높이를 맞추고 가운데 구분선)</li>
+<li>비교 역본은 <code>compute()</code> Isolate로 따로 불러와 기본 역본과 함께 메모리에 유지, 선택한 비교 역본은 저장해 재실행 시 복원</li>
+<li>기본 역본을 비교 역본과 같은 역본으로 바꾸면 비교를 자동 해제, 역본마다 절 수가 다른 장(아가 6장 등)은 남는 절을 마지막 절 아래에 이어서 표시</li>
+<li>역본 버튼에 <code>개정·KJV</code>처럼 두 역본을 짧게 표시</li>
+</ul>
+<h3>📅 2) 읽기표 분량 표기</h3>
+<ul>
+<li>2027 성경읽기표의 분량을 <code>창 1~3</code> → <strong><code>창 1장~3장</code></strong>으로 바꿔 읽기 쉽게 (책이 바뀌는 날은 <code>창 50장 ~ 출 2장</code>, 한 장만 읽는 날은 <code>옵 1장</code>)</li>
+</ul>
+<h3>✅ 3) 테스트</h3>
+<ul>
+<li>비교 역본을 같은 권·장으로 불러오는지, 기본 역본과 같아지면 해제되는지, 비교 끄기가 되는지 검증하는 테스트 추가 — 전체 20개 통과</li>
+<li>휴대폰(개역개정 + KJV)·iPad 가로(개역개정 + 개역한글) 시뮬레이터에서 화면 확인</li>
+</ul>
+<h3>🗂 4) 변경된 파일</h3>
+<pre><code>lib/
+├── services/
+│   ├── bible_service.dart         # [변경] 비교 역본 로드·저장·해제(compareVersion), 역본 짧은 이름
+│   └── reading_plan_service.dart  # [변경] 분량 표기 "창 1장~3장"
+└── screens/
+    └── bible_tab.dart             # [변경] 역본 시트 '비교해서 보기', 휴대폰 위아래·태블릿 가로 좌우 비교 표시
+test/
+├── bible_search_test.dart         # [변경] 비교 역본 테스트 추가
+└── reading_plan_test.dart         # [변경] 새 분량 표기 검증
+</code></pre>
+</details>
+<p><a href="https://github.com/herjy6372/churchpraise-app" target="_blank" rel="noopener noreferrer">GitHub 코드 보기 ↗</a></p>
 </template>
 <template id="mdSrc3"><h1>⛪ 김천침례교회 홈페이지 — 정적 사이트 + 교인 전용 회원 시스템</h1>
 <blockquote>
