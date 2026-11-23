@@ -116,7 +116,7 @@ section{scroll-margin-top:80px}
 .md-fold>summary::-webkit-details-marker{display:none}
 .md-fold>summary span{font-size:.78rem;font-weight:700;color:#5b86ad;margin-left:6px}
 .md-fold>summary span::after{content:" ▾"}
-.md-fold[open]>summary span{display:none}
+.md-fold[open]>summary span{font-size:0}.md-fold[open]>summary span::after{content:"접기 ▴";font-size:.78rem}
 .md-fold[open]>summary{margin-bottom:14px}
 .pf-links{display:flex;gap:12px;flex-wrap:wrap}
 .pf-btn{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:800;padding:12px 22px;border:1.4px solid #181818;border-radius:24px;transition:.25s}
@@ -748,40 +748,6 @@ Platform
 <figure><img loading="lazy" src="assets/img/todo-alarm-20261123.jpg" alt="알람 화면 (중지 · 1·5·10·30분 다시 울림)"><figcaption>알람</figcaption></figure>
 <figure><img loading="lazy" src="assets/img/todo-theme-cat-20261123.jpg" alt="고양이 테마"><figcaption>고양이 테마</figcaption></figure>
 </div>
-<p>---:|:---:|:---:|
-| <img src="docs/screenshots/home.png" width="220" alt="홈 화면"> | <img src="docs/screenshots/home_menu.png" width="220" alt="홈 메뉴"> | <img src="docs/screenshots/todo_list.png" width="220" alt="할 일 목록"> |</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">캘린더</th>
-<th style="text-align: center;">통계</th>
-<th style="text-align: center;">기분 한 줄</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><img src="docs/screenshots/calendar.png" width="220" alt="날짜형 목록"></td>
-<td style="text-align: center;"><img src="docs/screenshots/graph.png" width="220" alt="그래프형 목록"></td>
-<td style="text-align: center;"><img src="docs/screenshots/mood.png" width="220" alt="기분 한 줄"></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">가계부</th>
-<th style="text-align: center;">알람</th>
-<th style="text-align: center;">고양이 테마</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><img src="docs/screenshots/ledger.png" width="220" alt="가계부"></td>
-<td style="text-align: center;"><img src="docs/screenshots/alarm.png" width="220" alt="알람 화면"></td>
-<td style="text-align: center;"><img src="docs/screenshots/theme_cat.png" width="220" alt="고양이 테마"></td>
-</tr>
-</tbody>
-</table>
 <hr />
 <h2>🛠 2. 사용 기술 및 개발 환경 (Tech Stack)</h2>
 <table>
@@ -1040,7 +1006,7 @@ Platform
 </ul>
 <hr />
 </details>
-<h2>🔧 7. 추가 업데이트 (v1.6.0 ~ v1.6.2)</h2>
+<details class="md-fold"><summary>🔧 7. 추가 업데이트 (v1.6.0 ~ v1.6.2) <span>펼쳐 보기</span></summary>
 <h3>🧩 1) 메모 · 알람 · 홈 화면 위젯 (v1.6.0)</h3>
 <ul>
 <li>메모 기능과 알람(아침 깨우기·잘 때·일반) 추가</li>
@@ -1083,7 +1049,8 @@ Platform
 <li><strong>상단 안내 간소화</strong> — 겹쳐 있던 경고·로그인 배너를 상황별 한 줄(비로그인 / 기기 저장·백업 안내 / 베타)로 줄여 요약 카드와 이번 주 일정이 첫 화면에 바로 보이게 함</li>
 <li><strong>할 일 바로 추가</strong> — 홈의 "할 일 추가" 플로팅 버튼과, 일정이 없을 때 눌러서 추가하는 빈 일정 카드</li>
 <li><strong>설정 정리</strong> — 시간대별 알림에서 아이콘과 중복되던 이모지를 제거하고, 한국어가 한두 글자씩 끊겨 줄바꿈되지 않도록 단어 사이에만 줄이 바뀌게 하는 <code>keepWords</code>(U+2060 WORD JOINER) 적용</li>
-</ul></template>
+</ul>
+</details></template>
 <template id="mdSrc2"><h1>📖 성경&amp;찬양 (구 교회찬양집) — 성경 · 새찬송가 &amp; CCM 악보 뷰어 앱</h1>
 <blockquote>
 <p><strong>개발 기간:</strong> 2026.06 ~ 진행중 (개인 프로젝트, 1인 개발)<br />
