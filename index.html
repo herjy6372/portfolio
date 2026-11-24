@@ -118,6 +118,9 @@ section{scroll-margin-top:80px}
 .md-fold>summary span::after{content:" ▾"}
 .md-fold[open]>summary span{font-size:0}.md-fold[open]>summary span::after{content:"접기 ▴";font-size:.78rem}
 .md-fold[open]>summary{margin-bottom:14px}
+.md-recent{margin:22px 0 8px;padding:18px 20px 6px;background:#f4f8fc;border:1px solid #dbe6f1;border-radius:12px}
+.md-modal-body .md-recent h2{margin:0 0 12px!important;padding-top:0;border-top:none;font-size:1.1rem}
+.md-modal-body .md-recent p{font-size:.9rem;color:#5b6470}
 .pf-links{display:flex;gap:12px;flex-wrap:wrap}
 .pf-btn{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:800;padding:12px 22px;border:1.4px solid #181818;border-radius:24px;transition:.25s}
 .pf-btn:hover{background:#181818;color:#fff}
@@ -729,9 +732,20 @@ Platform
 <p><strong>개발 기간:</strong> 2026.04 ~ 진행중 (개인 프로젝트, 1인 개발)<br />
 <strong>플랫폼:</strong> Android (Google Play Store 비공개 테스트) / iOS<br />
 <strong>패키지명:</strong> com.terablack.mytodo<br />
-<strong>현재 버전:</strong> 1.6.3+43<br />
+<strong>현재 버전:</strong> 1.6.3 (빌드 43) — 2026년 11월 24일 비공개 테스트 배포<br />
 <strong>저장소:</strong> <a href="https://github.com/herjy6372/mytodo" target="_blank" rel="noopener noreferrer">github.com/herjy6372/mytodo ↗</a></p>
 </blockquote>
+<div class="md-recent">
+<h2>🆕 최근 업데이트 (v1.6.3)</h2>
+<ul>
+<li><strong>메모 글 서식</strong> — 글자 크기, 굵게, 기울임, 밑줄, 취소선, 글자색, 형광, 정렬, 번호·글머리 목록, 체크리스트</li>
+<li><strong>메모 그림 그리기</strong> — 펜·형광펜·지우개(부분/획)·글상자·이동 도구, 실행 취소·다시 실행, 두 손가락 스크롤</li>
+<li><strong>메모 목록 최적화</strong> — 화면 폭에 따라 2~6칸으로 배치해 휴대폰 가로 화면·태블릿에서도 카드가 알맞은 크기로 보이고, 그림 메모는 미리보기 표시</li>
+<li><strong>가로 화면 배치</strong> — 세로가 짧은 화면에서는 제목·전환 버튼을 상단 바로, 그리기 도구를 왼쪽 막대로 옮겨 작업 영역 확보</li>
+<li>예전 메모·검색·홈 화면 위젯·백업 파일과 그대로 호환</li>
+</ul>
+<p>이전 버전의 변경 내역은 아래 6·7번 업데이트 내역에 정리되어 있습니다.</p>
+</div>
 <hr />
 <h2>💡 1. 프로젝트 소개</h2>
 <p><strong>"나의 할 일"</strong> 은 할 일 관리를 중심으로 캘린더·가계부·기분 기록·타이머·세계시각까지 하나의 앱에서 관리하는 <strong>올인원 라이프 관리 Flutter 앱</strong>입니다.</p>
