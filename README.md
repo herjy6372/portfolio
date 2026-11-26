@@ -3,6 +3,7 @@
 AI 도구(Claude, Gemini, ChatGPT Codex)를 활용해 기획부터 설계, 구현, 스토어 배포까지 1인으로 진행한 프로젝트를 모은 개인 포트폴리오입니다.
 
 - 사이트: https://herjy6372.github.io/portfolio/
+- 개발 블로그: https://herjy6372.github.io/blog/ (프로젝트별 문제 해결 기록, 한국어·영어)
 - 메인: `index.html` · 소개 서브페이지: `herjy6372_v3_0_sub.html`
 
 ## 수록 프로젝트
