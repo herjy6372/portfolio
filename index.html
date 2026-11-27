@@ -331,7 +331,7 @@ button.pf-process-toggle{background:none;border:0;padding:0;font-family:inherit}
       <div class="pf-panel on">
         <div class="pf-panel-top">
           <div>
-            <div class="pf-type">Flutter App · v1.6.3</div>
+            <div class="pf-type">Flutter App · v1.6.4</div>
             <h3>나의 할 일</h3>
             <p class="desc">할 일·캘린더·통계를 중심으로 가계부·기분 기록·알람·메모(글 서식·손글씨 그림)·타이머·세계시각까지 하나로 관리하는 올인원 라이프 관리 앱. 10대부터 80대까지 쓰기 쉽도록 큰 글씨 모드, 대비를 높인 홈 메뉴, 삭제 되돌리기, 백업 파일을 갖췄고 Android·iOS 홈 화면 위젯 9종을 지원합니다.</p>
             <ul class="pf-highlights"><li>메모에 글 서식(flutter_quill)과 펜·형광펜·지우개·글상자 그리기 판 추가, 화면 폭에 맞춰 2~6칸으로 바뀌는 메모 목록</li><li>R8·Dart 난독화로 Play의 DEX 최적화 경고를 해결하고 설치 크기 19.7MB → 12.8MB (v1.6.3 기준)</li><li>1분간 울리는 알람 화면 · 1·5·10·30분 다시 울림 (잠금 화면 위 표시, 네이티브 사운드)</li><li>홈 화면 위젯 9종 (Android RemoteViews · iOS WidgetKit, App Group 공유)</li><li>큰 글씨 모드 · 삭제 되돌리기 · JSON 백업 파일 · 홈 메뉴 켜고 끄기로 전 연령 사용성 개선</li></ul>
@@ -736,17 +736,16 @@ Platform
 <p><strong>개발 기간:</strong> 2026.04 ~ 진행중 (개인 프로젝트, 1인 개발)<br />
 <strong>플랫폼:</strong> Android (Google Play Store 비공개 테스트) / iOS<br />
 <strong>패키지명:</strong> com.terablack.mytodo<br />
-<strong>현재 버전:</strong> 1.6.3 (빌드 43) — 2026년 11월 24일 비공개 테스트 배포<br />
+<strong>현재 버전:</strong> 1.6.4 (빌드 44) — 2026년 11월 27일 비공개 테스트 제출 (Google 검토 중)<br />
 <strong>저장소:</strong> <a href="https://github.com/herjy6372/mytodo" target="_blank" rel="noopener noreferrer">github.com/herjy6372/mytodo ↗</a></p>
 </blockquote>
 <div class="md-recent">
-<h2>🆕 최근 업데이트 (v1.6.3)</h2>
+<h2>🆕 최근 업데이트 (v1.6.4)</h2>
 <ul>
-<li><strong>메모 글 서식</strong> — 글자 크기, 굵게, 기울임, 밑줄, 취소선, 글자색, 형광, 정렬, 번호·글머리 목록, 체크리스트</li>
-<li><strong>메모 그림 그리기</strong> — 펜·형광펜·지우개(부분/획)·글상자·이동 도구, 실행 취소·다시 실행, 두 손가락 스크롤</li>
-<li><strong>메모 목록 최적화</strong> — 화면 폭에 따라 2~6칸으로 배치해 휴대폰 가로 화면·태블릿에서도 카드가 알맞은 크기로 보이고, 그림 메모는 미리보기 표시</li>
-<li><strong>가로 화면 배치</strong> — 세로가 짧은 화면에서는 제목·전환 버튼을 상단 바로, 그리기 도구를 왼쪽 막대로 옮겨 작업 영역 확보</li>
-<li>예전 메모·검색·홈 화면 위젯·백업 파일과 그대로 호환</li>
+<li><strong>달력 주말 색 국가별 표시</strong> — 한국·일본은 토요일 파란색·일요일 빨간색, 필리핀·베트남은 일요일만 빨간색, 미국은 주말 색 구분 없음 (공휴일은 빨간색)</li>
+<li><strong>세계 시각</strong> — 큰 글씨에서도 도시 아래 날짜가 잘리지 않도록, 한 줄에 다 들어가지 않으면 날짜를 다음 줄에 표시</li>
+<li><strong>그래프형 목록</strong> — 큰 글씨에서 날짜 라벨이 겹치던 문제 수정 (월별 라벨은 26.11처럼 짧게 표시)</li>
+<li><strong>날짜형 목록</strong> — 큰 글씨에서 달력 요일 줄이 잘리던 문제 수정</li>
 </ul>
 <p>이전 버전의 변경 내역은 아래 6·7번 업데이트 내역에 정리되어 있습니다.</p>
 </div>
@@ -1024,7 +1023,7 @@ Platform
 </ul>
 <hr />
 </details>
-<details class="md-fold"><summary>🔧 7. 추가 업데이트 (v1.6.0 ~ v1.6.3) <span>펼쳐 보기</span></summary>
+<details class="md-fold"><summary>🔧 7. 추가 업데이트 (v1.6.0 ~ v1.6.4) <span>펼쳐 보기</span></summary>
 <h3>🧩 1) 메모 · 알람 · 홈 화면 위젯 (v1.6.0)</h3>
 <ul>
 <li>메모 기능과 알람(아침 깨우기·잘 때·일반) 추가</li>
@@ -1075,6 +1074,12 @@ Platform
 <li><strong>그림 그리기</strong> — <code>Listener</code> 기반 그리기 판에 펜·형광펜·지우개(<code>BlendMode.clear</code> 부분 지우기 / 획 지우기)·글상자·이동 도구, 실행 취소·다시 실행, 두 손가락 스크롤, 펜 뒤쪽 지우개 지원. 좌표를 가로 1000 기준 가상 좌표로 저장해 세로·가로·태블릿에서 같은 비율로 표시</li>
 <li><strong>가로 모드 배치</strong> — 세로 공간이 짧으면 제목·글/그림 전환을 상단 바로, 그리기 도구를 왼쪽 세로 막대로 옮겨 작업 영역 확보</li>
 <li><strong>호환성</strong> — 메모에 서식(<code>rich</code>, Quill Delta)과 그림(<code>drawing</code>) 필드를 추가하고 <code>content</code>에는 서식 없는 글자를 계속 저장해 검색·홈 화면 위젯·백업 파일·예전 메모와 호환. 저장 형식 단위 테스트 추가</li>
+</ul>
+<h3>🗓 8) 달력 주말 색 · 큰 글씨 화면 다듬기 (v1.6.4)</h3>
+<ul>
+<li><strong>국가별 주말 색</strong> — <code>TableCalendar</code>의 <code>weekendDays</code>를 비우고 <code>dowBuilder</code>·<code>defaultBuilder</code>에서 프로필 국가 코드(KR·JP·PH·VN·US)에 따라 토·일 색을 직접 지정. 한국·일본은 토요일 파란색·일요일 빨간색, 필리핀·베트남은 일요일만 빨간색, 미국은 구분 없음. 오늘 날짜 표시도 같은 규칙을 따름</li>
+<li><strong>큰 글씨 대응</strong> — 달력 요일 줄 높이(<code>daysOfWeekHeight</code>)를 <code>TextScaler</code>에 비례시키고, 그래프 축 라벨은 <code>TitleMeta.parentAxisSize</code>로 구한 칸 너비의 85% 안에서 <code>FittedBox</code>로 축소, 세계 시각의 GMT·날짜는 <code>Wrap</code>으로 자동 줄바꿈</li>
+<li><strong>업데이트 내역 정리</strong> — 1.5.2~1.6.4 변경 사항을 Firestore <code>updates</code> 컬렉션 입력 형식(버전·제목·내용)에 맞춘 Excel(<code>docs/update_history.xlsx</code>)로 정리</li>
 </ul>
 </details></template>
 <template id="mdSrc2"><h1>📖 성경&amp;찬양 (구 교회찬양집) — 성경 · 새찬송가 &amp; CCM 악보 뷰어 앱</h1>
