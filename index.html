@@ -1087,7 +1087,7 @@ Platform
 <p><strong>개발 기간:</strong> 2026.06 ~ 진행중 (개인 프로젝트, 1인 개발)<br />
 <strong>플랫폼:</strong> Android (Google Play Store 비공개 테스트) / iOS<br />
 <strong>패키지명:</strong> com.terablack.churchpraise<br />
-<strong>현재 버전:</strong> 1.5.0 (빌드 14)<br />
+<strong>현재 버전:</strong> 1.6.0 (빌드 15)<br />
 <strong>저장소:</strong> <a href="https://github.com/herjy6372/churchpraise-app" target="_blank" rel="noopener noreferrer">github.com/herjy6372/churchpraise-app ↗</a></p>
 </blockquote>
 <hr />
@@ -1238,7 +1238,7 @@ Platform
 <hr />
 <h2>🪵 4. 아키텍처 및 시스템 구조</h2>
 <blockquote>
-<p>아래는 첫 출시(v1.0) 당시 구조입니다. 최신 구조는 <strong>8-6) 저장소 구조 (v1.3.0 기준)</strong>와 <strong>9-5) 추가·변경된 파일 (v1.4.0)</strong>, <strong>10-4) 변경된 파일 (v1.5.0)</strong>을 참고하세요.</p>
+<p>아래는 첫 출시(v1.0) 당시 구조입니다. 최신 구조는 <strong>8-6) 저장소 구조 (v1.3.0 기준)</strong>와 <strong>9-5) 추가·변경된 파일 (v1.4.0)</strong>, <strong>10-4) 변경된 파일 (v1.5.0)</strong>, <strong>12-5) 변경된 파일 (v1.6.0)</strong>을 참고하세요.</p>
 </blockquote>
 <pre><code>lib/ (v1.0 기준)
 ├── main.dart                  # 앱 진입점, Firebase 초기화
@@ -1637,6 +1637,45 @@ test/
 <pre><code>firestore.rules   # [신규] 본인 users/{uid} 문서만 읽기·쓰기 (콘솔 게시 내용과 동일)
 firebase.json     # [변경] firestore.rules 연결
 </code></pre>
+</details>
+<details class="md-fold"><summary>💾 12. v1.6.0 업데이트 (빌드 15) — 파일로 백업/복원 <span>펼쳐 보기</span></summary>
+<h3>🎯 1) 배경</h3>
+<ul>
+<li>기존 백업은 Google 로그인 후 Firestore 서버에만 저장 → 로그인하지 않는 사용자는 백업할 수 없고, 직접 올린 <strong>내 악보 파일(PDF·이미지)은 백업되지 않으며</strong>, Firestore 문서 1MB 한도 때문에 필기가 많으면 백업이 실패할 수 있음</li>
+<li>서버를 거치지 않고 <strong>기기에 파일 하나로 저장</strong>하는 백업을 추가</li>
+</ul>
+<h3>📦 2) 백업 파일 구조</h3>
+<ul>
+<li>설정 → <strong>파일로 백업</strong>을 누르면 <code>성경찬양_백업_날짜_시각.zip</code> 하나로 묶어 사용자가 고른 위치에 저장 (iOS는 파일 앱, Android는 다운로드·드라이브 등)</li>
+<li><code>backup.json</code>: 즐겨찾기·콘티·태그·필기·성경 형광펜·읽기표 진도와 내 악보 목록 / <code>scores/</code>: 내 악보 원본 파일</li>
+<li><code>archive</code> 패키지의 <code>ZipFileEncoder</code>로 파일을 스트리밍해 묶어, 큰 PDF도 메모리에 한꺼번에 올리지 않음</li>
+</ul>
+<h3>♻️ 3) 복원과 안전장치</h3>
+<ul>
+<li><strong>파일에서 복원</strong>: 설정 데이터는 덮어쓰고, 내 악보는 <strong>기존 것을 그대로 두고 백업에만 있는 것을 추가</strong> (같은 id는 건너뜀)</li>
+<li>이 앱의 백업인지(<code>app</code>, <code>format</code>) 확인하고, zip이 아니거나 다른 앱 파일이면 거부</li>
+<li>앱이 쓰는 데이터 키와 <code>anno_v1_</code> 필기만 되살려, 파일에 다른 키가 있어도 설정을 건드리지 못하게 함</li>
+<li>악보 파일은 zip 안의 경로 이름을 쓰지 않고 <strong>앱이 정한 이름으로 악보 폴더 안에만</strong> 저장(경로 조작 방지), 파일 하나 300MB 상한</li>
+<li>데이터 형식이 맞지 않아 앱이 읽지 못하면 <strong>원래 값으로 되돌리고</strong> 복원을 취소</li>
+</ul>
+<h3>📱 4) 네이티브 연동 &amp; 검증</h3>
+<ul>
+<li>기존 악보 선택용 MethodChannel에 백업 저장·선택을 추가 — Android는 SAF(<code>ACTION_CREATE_DOCUMENT</code> / <code>ACTION_OPEN_DOCUMENT</code>), iOS는 <code>UIDocumentPickerViewController</code>(내보내기 / 열기)</li>
+<li>단위 테스트 6개 추가(백업 구성, 새 기기 복원, 중복 악보 건너뛰기, 허용하지 않은 키·경로 무시, 잘못된 데이터 되돌리기, 다른 앱 파일 거부) — 전체 26개 통과</li>
+<li>iOS 시뮬레이터와 Android 에뮬레이터에서 <strong>악보 올리기 → 파일로 백업 → 악보 삭제·앱 데이터 초기화 → 파일에서 복원 → 악보 열기</strong>까지 확인</li>
+</ul>
+<h3>🗂 5) 변경된 파일</h3>
+<pre><code>lib/services/local_backup_service.dart   # [신규] zip 백업 생성·복원, 안전장치
+lib/services/score_service.dart          # [변경] 복원한 내 악보 추가(중복 id 제외)
+lib/screens/settings_screen.dart         # [변경] '파일로 백업' 칸 (파일로 백업 / 파일에서 복원)
+android/.../MainActivity.kt              # [변경] 백업 파일 저장·선택 (SAF)
+ios/Runner/AppDelegate.swift             # [변경] 백업 파일 내보내기·열기 (문서 선택기)
+test/local_backup_test.dart              # [신규] 파일 백업 테스트 6개
+</code></pre>
+<h3>🚀 6) 출시 (2026.11.28)</h3>
+<ul>
+<li>버전 <code>1.6.0+15</code>로 릴리스 App Bundle을 빌드해 <strong>비공개 테스트(Alpha) 트랙</strong>에 등록, 출시 노트 작성 후 <strong>Google 검토에 제출</strong> — 승인 후 직접 게시 예정</li>
+</ul>
 </details>
 <p><a href="https://github.com/herjy6372/churchpraise-app" target="_blank" rel="noopener noreferrer">GitHub 코드 보기 ↗</a></p>
 </template>
