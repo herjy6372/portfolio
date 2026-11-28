@@ -1804,6 +1804,10 @@ test/local_backup_test.dart              # [신규] 파일 백업 테스트 6개
 <li><strong>구글 첫 로그인 가입 실패 수정</strong>: 구글 계정으로 처음 로그인할 때 만드는 회원 문서에 등급(<code>role: "성도"</code>)이 빠져 규칙에 거부되던 버그 해결</li>
 <li><strong>본인 정보 수정 제한</strong>: 성별은 남/여전도회 쓰기 권한과 연결되므로 <strong>처음 입력할 때만 본인이 정하고 이후 변경은 관리자만</strong> 가능하게 하고, 휴대폰 번호는 <strong>본인 소유의 중복 방지 마커가 있을 때만</strong> 바꿀 수 있게 해 중복 가입 방지를 우회하지 못하도록 함 — 마이페이지에서는 성별이 있으면 선택을 잠그고 관리자 문의 안내 표시</li>
 <li><strong>검증</strong>: Firebase 에뮬레이터에서 <code>@firebase/rules-unit-testing</code>으로 승인 전·승인·관리자·비로그인 회원의 열람, 구글 첫 가입, 성별·번호·승인 상태 변경 등 <strong>18가지 경우를 시험해 모두 통과</strong>한 뒤 Firestore 규칙을 콘솔에 게시(Storage는 현재 사용하지 않아 규칙 파일만 미리 준비), 비로그인 상태로 회원·신청·번호 목록 조회가 거부되는지도 실제 서버에서 확인</li>
+</ul>
+<h3>💾 6) 앱 소개에 파일로 백업 추가 (2026.11.28)</h3>
+<ul>
+<li>성경&amp;찬양 v1.6.0의 새 기능에 맞춰 신청 페이지 기능 목록에 <strong>"파일로 백업 — 로그인 없이 내 악보까지 기기에 저장"</strong> 항목 추가</li>
 </ul></template>
 <template id="mdSrc4"><h1>🍳 나의 레시피 (My Recipe) — TheMealDB 기반 레시피 검색 앱</h1>
 <blockquote>
