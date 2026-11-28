@@ -34,7 +34,7 @@ Google Play 스토어 등록정보에 올린 이미지(앱 아이콘, 그래픽 
 |---|---|
 | 성경&찬양 | [churchpraise-app/docs/play-store](https://github.com/herjy6372/churchpraise-app/tree/main/docs/play-store) — `graphics/`(아이콘 512×512, 그래픽 1024×500), `phone/`(1080×1920 6장), `tablet/`(1920×1080 6장, v1.5.0 기준) |
 
-이 사이트의 성경&찬양 미리보기 이미지(`assets/img/pf-praise-compare-20261122.jpg`, `assets/img/praise-*-20261115.jpg`, `assets/img/praise-compare*-20261122.jpg`)는 성경 비교 보기(휴대폰·태블릿 가로)·형광펜·색상 권 선택·여러 절 선택·2027 읽기표가 들어간 최신 화면이고, 앱 저장소의 `docs/screenshots/`와 같은 화면입니다. (스토어 이미지는 v1.5.0 기준) 이미지를 바꿀 때는 브라우저 캐시 때문에 예전 이미지가 보이지 않도록 파일 이름의 날짜를 바꿔 새 이름으로 올립니다.
+이 사이트의 성경&찬양 미리보기 이미지(`assets/img/pf-praise-compare-20261122.jpg`, `assets/img/praise-*-20261115.jpg`, `assets/img/praise-compare*-20261122.jpg`, `assets/img/praise-file-backup-20261128.jpg`)는 성경 비교 보기(휴대폰·태블릿 가로)·형광펜·색상 권 선택·여러 절 선택·2027 읽기표가 들어간 최신 화면이고, 앱 저장소의 `docs/screenshots/`와 같은 화면입니다. (스토어 이미지는 v1.5.0 기준) 이미지를 바꿀 때는 브라우저 캐시 때문에 예전 이미지가 보이지 않도록 파일 이름의 날짜를 바꿔 새 이름으로 올립니다.
 
 김천침례교회 미리보기 이미지(`assets/img/pf-church-20261122.jpg`)는 2026년 표어와 성경&찬양 앱 비공개 테스트 배너가 보이는 메인 화면입니다.
 
