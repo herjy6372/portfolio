@@ -15,6 +15,7 @@ AI 도구(Claude, Gemini, ChatGPT Codex)를 활용해 기획부터 설계, 구�
 | 김천침례교회 | 웹사이트 | HTML/CSS/JS, Firebase Auth·Firestore 보안 규칙(승인 회원 전용 게시판, 에뮬레이터 테스트), GitHub Pages | 개인정보 보호로 비공개 · 성경&찬양 앱 테스터 모집 페이지 운영 |
 | 나의 레시피 | Flutter 앱 | Riverpod, Dio, Hive, TheMealDB | [코드](https://github.com/herjy6372/myrecipe) · Google Play 비공개 테스트 |
 | 두근두근 카드 뒤집기 | 웹 미니게임 | Vanilla JS, Firestore 실시간 순위 | [플레이](https://herjy6372.github.io/cardflipmatch/) · [코드](https://github.com/herjy6372/cardflipmatch) |
+| 루티니 | Flutter 앱 | Health Connect·HealthKit 연동(걸음 수·운동 거리·체중), 권한 팝업 없는 자동 동기화, 홈 화면 위젯, Hive, Firestore | [코드](https://github.com/herjy6372/routiny) · Google Play 비공개 테스트 |
 | 한국 랜덤여행 | Flutter 앱 | CustomPainter·GeoJSON 지도, Provider, Hive, Firebase Auth·Firestore | [코드](https://github.com/herjy6372/randomtravel) · Google Play 비공개 테스트 |
 
 ## 구조
