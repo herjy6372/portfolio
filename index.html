@@ -1087,7 +1087,7 @@ Platform
 <p><strong>개발 기간:</strong> 2026.06 ~ 진행중 (개인 프로젝트, 1인 개발)<br />
 <strong>플랫폼:</strong> Android (Google Play Store 비공개 테스트) / iOS<br />
 <strong>패키지명:</strong> com.terablack.churchpraise<br />
-<strong>현재 버전:</strong> 1.6.1 (빌드 16)<br />
+<strong>현재 버전:</strong> 1.6.2 (빌드 17)<br />
 <strong>스토어 카테고리:</strong> 도서/참고자료 (2026.11 음악/오디오에서 변경)<br />
 <strong>테스터 모집:</strong> 김천침례교회 홈페이지 신청 페이지 (13번 참고)<br />
 <strong>저장소:</strong> <a href="https://github.com/herjy6372/churchpraise-app" target="_blank" rel="noopener noreferrer">github.com/herjy6372/churchpraise-app ↗</a></p>
@@ -1111,6 +1111,7 @@ Platform
 <table>
 <thead><tr><th>버전</th><th>날짜</th><th>내용</th><th>상태</th><th>자세히</th></tr></thead>
 <tbody>
+<tr><td>1.6.2 (빌드 17)</td><td>2026.11.28</td><td>서버 백업이 1MB 한도를 넘으면 미리 알리고 '파일로 백업'으로 안내</td><td>등록</td><td>15번</td></tr>
 <tr><td>1.6.1 (빌드 16)</td><td>2026.11.28</td><td>앱 재설치·기기 이동으로 앱 폴더 경로가 바뀌어도 내 악보 파일을 다시 찾도록 수정</td><td>출시</td><td>14번</td></tr>
 <tr><td>1.6.0 (빌드 15)</td><td>2026.11.28</td><td>파일로 백업/복원 (로그인 없이 내 악보 파일까지 .zip 하나로 저장)</td><td>출시</td><td>12번</td></tr>
 <tr><td>1.5.0 (빌드 14)</td><td>2026.11.22</td><td>성경 두 역본 비교 보기, 읽기표 분량 &quot;창 1장~3장&quot; 표기</td><td>출시</td><td>10번</td></tr>
@@ -1252,7 +1253,7 @@ Platform
 <hr />
 <h2>🪵 4. 아키텍처 및 시스템 구조</h2>
 <blockquote>
-<p>아래는 첫 출시(v1.0) 당시 구조입니다. 최신 구조는 <strong>8-6) 저장소 구조 (v1.3.0 기준)</strong>와 <strong>9-5) 추가·변경된 파일 (v1.4.0)</strong>, <strong>10-4) 변경된 파일 (v1.5.0)</strong>, <strong>12-5) 변경된 파일 (v1.6.0)</strong>, <strong>14-3) 변경된 파일 (v1.6.1)</strong>을 참고하세요.</p>
+<p>아래는 첫 출시(v1.0) 당시 구조입니다. 최신 구조는 <strong>8-6) 저장소 구조 (v1.3.0 기준)</strong>와 <strong>9-5) 추가·변경된 파일 (v1.4.0)</strong>, <strong>10-4) 변경된 파일 (v1.5.0)</strong>, <strong>12-5) 변경된 파일 (v1.6.0)</strong>, <strong>14-3) 변경된 파일 (v1.6.1)</strong>, <strong>15-3) 변경된 파일 (v1.6.2)</strong>을 참고하세요.</p>
 </blockquote>
 <pre><code>lib/ (v1.0 기준)
 ├── main.dart                  # 앱 진입점, Firebase 초기화
@@ -1738,6 +1739,28 @@ test/score_relink_test.dart       # [신규] 경로 복구 테스트 2개
 <h3>🚀 4) 출시 (2026.11.28)</h3>
 <ul>
 <li>1.6.0 게시 후 버전 <code>1.6.1+16</code>으로 릴리스 App Bundle을 빌드해 <strong>비공개 테스트(Alpha) 트랙</strong>에 등록, 출시 노트 작성 후 <strong>Google 검토에 제출</strong> — 승인되어 테스터에게 <strong>출시 완료</strong></li>
+</ul>
+</details>
+<details class="md-fold"><summary>💬 15. v1.6.2 업데이트 (빌드 17) — 서버 백업 크기 안내 <span>펼쳐 보기</span></summary>
+<h3>🐞 1) 문제</h3>
+<ul>
+<li>서버 백업은 Firestore <code>users/{uid}</code> 문서 하나에 모든 데이터를 담는데, Firestore 문서 한도는 <strong>1MiB</strong> → 악보 필기가 아주 많으면 서버가 저장을 거절하고, 사용자에게는 영문 오류만 보였음</li>
+</ul>
+<h3>✅ 2) 해결</h3>
+<ul>
+<li>올리기 전에 필드 이름·값의 UTF-8 바이트로 문서 크기를 계산해 <strong>1,000,000바이트를 넘으면 미리 막음</strong> (한도보다 조금 작게 잡아 서버 거절 전에 안내)</li>
+<li>계산보다 실제 문서가 커서 서버가 거절한 경우(<code>invalid-argument</code>)도 같은 예외(<code>BackupTooLargeException</code>)로 바꿈</li>
+<li>설정 화면에서 "백업 데이터가 너무 커서 서버에 저장할 수 없습니다 (약 1.5MB)"처럼 크기와 함께 안내하고, <strong>[파일로 백업]</strong> 버튼으로 바로 이어서 실행 (파일 백업은 크기 제한 없음)</li>
+<li>단위 테스트 3개 추가(크기 계산, 한도 판정, 안내 문구) — 전체 31개 통과</li>
+</ul>
+<h3>🗂 3) 변경된 파일</h3>
+<pre><code>lib/services/sync_service.dart        # [변경] 서버 백업 크기 계산·한도 초과 예외
+lib/screens/settings_screen.dart      # [변경] 한도 초과 시 안내와 [파일로 백업] 바로가기
+test/server_backup_size_test.dart     # [신규] 서버 백업 크기 테스트 3개
+</code></pre>
+<h3>🚀 4) 출시 (2026.11.28)</h3>
+<ul>
+<li>1.6.1 게시 후 버전 <code>1.6.2+17</code>로 릴리스 App Bundle을 빌드해 <strong>비공개 테스트(Alpha) 트랙</strong>에 등록</li>
 </ul>
 </details>
 <p><a href="https://github.com/herjy6372/churchpraise-app" target="_blank" rel="noopener noreferrer">GitHub 코드 보기 ↗</a></p>

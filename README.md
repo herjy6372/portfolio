@@ -11,7 +11,7 @@ AI 도구(Claude, Gemini, ChatGPT Codex)를 활용해 기획부터 설계, 구�
 | 프로젝트 | 유형 | 주요 기술 | 상태 / 링크 |
 |---|---|---|---|
 | 나의 할 일 | Flutter 앱 (v1.6.4) | Firebase Auth·Firestore, fl_chart, home_widget·WidgetKit 위젯, flutter_quill 메모 서식, R8 난독화 | [코드](https://github.com/herjy6372/mytodo) · Google Play 비공개 테스트 |
-| 성경&찬양 | Flutter 앱 (v1.6.1) | pdfx, CustomPainter 필기, MethodChannel(Android SAF·iOS 문서 선택기), Isolate, 성경 역본 비교 보기, zip 파일 백업/복원(archive), Firestore 보안 규칙 | [코드](https://github.com/herjy6372/churchpraise-app) · [스토어 이미지](https://github.com/herjy6372/churchpraise-app/tree/main/docs/play-store) · Google Play 비공개 테스트 (교회 홈페이지에서 테스터 모집) |
+| 성경&찬양 | Flutter 앱 (v1.6.2) | pdfx, CustomPainter 필기, MethodChannel(Android SAF·iOS 문서 선택기), Isolate, 성경 역본 비교 보기, zip 파일 백업/복원(archive), Firestore 보안 규칙 | [코드](https://github.com/herjy6372/churchpraise-app) · [스토어 이미지](https://github.com/herjy6372/churchpraise-app/tree/main/docs/play-store) · Google Play 비공개 테스트 (교회 홈페이지에서 테스터 모집) |
 | 김천침례교회 | 웹사이트 | HTML/CSS/JS, Firebase Auth·Firestore 보안 규칙(승인 회원 전용 게시판, 에뮬레이터 테스트), GitHub Pages | 개인정보 보호로 비공개 · 성경&찬양 앱 테스터 모집 페이지 운영 |
 | 나의 레시피 | Flutter 앱 | Riverpod, Dio, Hive, TheMealDB | [코드](https://github.com/herjy6372/myrecipe) · Google Play 비공개 테스트 |
 | 두근두근 카드 뒤집기 | 웹 미니게임 | Vanilla JS, Firestore 실시간 순위 | [플레이](https://herjy6372.github.io/cardflipmatch/) · [코드](https://github.com/herjy6372/cardflipmatch) |
