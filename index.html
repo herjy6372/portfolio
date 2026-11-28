@@ -1743,7 +1743,7 @@ test/
 <li><strong>게시판 열람 제한</strong>: 남·여전도회·청년회 게시글과 첨부 사진의 읽기 규칙이 "로그인 여부"만 확인해, 가입만 하고 승인 전인 사람도 교인 전용 게시판을 볼 수 있던 문제를 발견 → Firestore·Storage 규칙을 <strong>관리자가 승인한 회원(또는 관리자)만 열람</strong>하도록 수정 (교회소식은 기존처럼 공개)</li>
 <li><strong>구글 첫 로그인 가입 실패 수정</strong>: 구글 계정으로 처음 로그인할 때 만드는 회원 문서에 등급(<code>role: "성도"</code>)이 빠져 규칙에 거부되던 버그 해결</li>
 <li><strong>본인 정보 수정 제한</strong>: 성별은 남/여전도회 쓰기 권한과 연결되므로 <strong>처음 입력할 때만 본인이 정하고 이후 변경은 관리자만</strong> 가능하게 하고, 휴대폰 번호는 <strong>본인 소유의 중복 방지 마커가 있을 때만</strong> 바꿀 수 있게 해 중복 가입 방지를 우회하지 못하도록 함 — 마이페이지에서는 성별이 있으면 선택을 잠그고 관리자 문의 안내 표시</li>
-<li><strong>검증</strong>: Firebase 에뮬레이터에서 <code>@firebase/rules-unit-testing</code>으로 승인 전·승인·관리자·비로그인 회원의 열람, 구글 첫 가입, 성별·번호·승인 상태 변경 등 <strong>18가지 경우를 시험해 모두 통과</strong>한 뒤 콘솔에 규칙 게시, 비로그인 상태로 회원·신청·번호 목록 조회가 거부되는지도 실제 서버에서 확인</li>
+<li><strong>검증</strong>: Firebase 에뮬레이터에서 <code>@firebase/rules-unit-testing</code>으로 승인 전·승인·관리자·비로그인 회원의 열람, 구글 첫 가입, 성별·번호·승인 상태 변경 등 <strong>18가지 경우를 시험해 모두 통과</strong>한 뒤 Firestore 규칙을 콘솔에 게시(Storage는 현재 사용하지 않아 규칙 파일만 미리 준비), 비로그인 상태로 회원·신청·번호 목록 조회가 거부되는지도 실제 서버에서 확인</li>
 </ul></template>
 <template id="mdSrc4"><h1>🍳 나의 레시피 (My Recipe) — TheMealDB 기반 레시피 검색 앱</h1>
 <blockquote>
