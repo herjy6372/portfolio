@@ -1111,6 +1111,7 @@ Platform
 <table>
 <thead><tr><th>버전</th><th>날짜</th><th>내용</th><th>상태</th><th>자세히</th></tr></thead>
 <tbody>
+<tr><td>1.6.3 (예정)</td><td>2026.11.29</td><td>Firebase 라이브러리 메이저 업데이트, 로그인 취소 시 오류 문구 숨김</td><td>출시 준비 중</td><td>16번</td></tr>
 <tr><td>1.6.2 (빌드 17)</td><td>2026.11.28</td><td>서버 백업이 1MB 한도를 넘으면 미리 알리고 '파일로 백업'으로 안내</td><td>Google 검토 중</td><td>15번</td></tr>
 <tr><td>1.6.1 (빌드 16)</td><td>2026.11.28</td><td>앱 재설치·기기 이동으로 앱 폴더 경로가 바뀌어도 내 악보 파일을 다시 찾도록 수정</td><td>출시</td><td>14번</td></tr>
 <tr><td>1.6.0 (빌드 15)</td><td>2026.11.28</td><td>파일로 백업/복원 (로그인 없이 내 악보 파일까지 .zip 하나로 저장)</td><td>출시</td><td>12번</td></tr>
@@ -1762,6 +1763,32 @@ test/server_backup_size_test.dart     # [신규] 서버 백업 크기 테스트 
 <ul>
 <li>1.6.1 게시 후 버전 <code>1.6.2+17</code>로 릴리스 App Bundle을 빌드해 <strong>비공개 테스트(Alpha) 트랙</strong>에 등록, 출시 노트 작성 후 <strong>Google 검토에 제출</strong> — 승인 후 직접 게시 예정</li>
 </ul>
+</details>
+<details class="md-fold"><summary>🔧 16. Firebase 라이브러리 메이저 업데이트 (다음 버전 1.6.3 예정) <span>펼쳐 보기</span></summary>
+<h3>🎯 1) 배경</h3>
+<ul>
+<li>2026.11.28 보안 점검에서 Firebase 패키지가 메이저 버전 하나씩 뒤처진 것을 확인 → 보안·호환성 패치를 계속 받기 위해 최신으로 올림</li>
+</ul>
+<h3>⬆️ 2) 업데이트 내용</h3>
+<ul>
+<li><code>firebase_core</code> 4 → <strong>5.2</strong>, <code>firebase_auth</code> 6 → <strong>7.1</strong>, <code>cloud_firestore</code> 6 → <strong>7.2</strong></li>
+<li><strong>iOS</strong>: 새 <code>firebase-ios-sdk</code> 13과 <code>google_sign_in_ios</code> 6.3의 GoogleSignIn 9 요구가 충돌 → <code>google_sign_in_ios</code> <strong>6.4.0</strong>(GoogleSignIn 10 허용)으로 올려 Swift Package 의존성 해결</li>
+<li><strong>Android</strong>: 새 <code>firebase-auth</code>가 Kotlin 2.4 메타데이터로 빌드되어 기존 Kotlin 2.2.20 컴파일러가 읽지 못함 → Kotlin 플러그인 <strong>2.3.20</strong>으로 올리고, 폐기된 <code>kotlinOptions.jvmTarget</code>을 <code>kotlin { compilerOptions }</code>로 이전</li>
+<li>덤으로, Google 로그인 창을 닫으면 영문 예외(<code>GoogleSignInException…canceled</code>)가 그대로 보이던 것을 <strong>조용히 넘어가도록</strong> 하고, 그 밖의 실패는 한국어 안내로 표시</li>
+</ul>
+<h3>✅ 3) 확인</h3>
+<ul>
+<li><code>flutter analyze</code> 0건, 단위 테스트 31개 통과</li>
+<li>Android 디버그 빌드, iOS 시뮬레이터 빌드 성공, iOS에서 앱 실행·Google 로그인 창 표시 확인</li>
+<li>실제 계정 로그인 후 서버 백업·복원은 출시 전에 실기기에서 확인 예정</li>
+</ul>
+<h3>🗂 4) 변경된 파일</h3>
+<pre><code>pubspec.yaml / pubspec.lock                 # [변경] Firebase 5·7·7.2, google_sign_in_ios 6.4
+android/settings.gradle.kts                 # [변경] Kotlin 플러그인 2.3.20
+android/app/build.gradle.kts                # [변경] kotlin.compilerOptions로 jvmTarget 지정
+ios/.../swiftpm/Package.resolved            # [변경] firebase-ios-sdk 13, GoogleSignIn 10
+lib/screens/settings_screen.dart            # [변경] 로그인 취소 시 안내 숨김
+</code></pre>
 </details>
 <p><a href="https://github.com/herjy6372/churchpraise-app" target="_blank" rel="noopener noreferrer">GitHub 코드 보기 ↗</a></p>
 </template>
